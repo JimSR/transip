@@ -1,8 +1,8 @@
-module github.com/caddy-dns/template
+module github.com/caddy-dns/transip
 
-go 1.16
+go 1.23.1
 
 require (
-	github.com/caddyserver/caddy/v2 v2.4.1
-	github.com/libdns/template v0.1.0
+	github.com/caddyserver/caddy/v2 v2.8.4
+	github.com/libdns/transip v0.0.0-20240619142000-fc072056ed2e
 )

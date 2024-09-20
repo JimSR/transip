@@ -1,6 +1,5 @@
 **DEVELOPER INSTRUCTIONS:**
 
-- Update module name in go.mod
 - Update dependencies to latest versions
 - Update name and year in license
 - Customize configuration and Caddyfile parsing
