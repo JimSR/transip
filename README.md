@@ -1,22 +1,13 @@
-**DEVELOPER INSTRUCTIONS:**
-
-- Update dependencies to latest versions
-- Update name and year in license
-- Customize configuration and Caddyfile parsing
-- Update godocs / comments (especially provider name and nuances)
-- Update README and remove this section
-
----
-
-\<PROVIDER\> module for Caddy
+TransIP module for Caddy
 ===========================
 
-This package contains a DNS provider module for [Caddy](https://github.com/caddyserver/caddy). It can be used to manage DNS records with \<PROVIDER\>.
+This package contains a DNS provider module for [Caddy](https://github.com/caddyserver/caddy). It can be used to manage DNS records with [TransIP](https://www.transip.eu/).
+It makes use of [libdns/transip](https://github.com/libdns/transip)
 
 ## Caddy module name
 
 ```
-dns.providers.provider_name
+dns.providers.transip
 ```
 
 ## Config examples
@@ -29,8 +20,9 @@ To use this module for the ACME DNS challenge, [configure the ACME issuer in you
 	"challenges": {
 		"dns": {
 			"provider": {
-				"name": "provider_name",
-				"api_token": "YOUR_PROVIDER_API_TOKEN"
+				"name": "transip",
+				"account_name": "YOUR_TRANSIP_ACCOUNT_NAME",
+				"private_key_path": "PATH_TO_YOUR_TRANSIP_PRIVATE_KEY"
 			}
 		}
 	}
@@ -42,13 +34,25 @@ or with the Caddyfile:
 ```
 # globally
 {
-	acme_dns provider_name ...
+	acme_dns transip <accountName> <privateKeyPath>
 }
 ```
 
 ```
 # one site
 tls {
-	dns provider_name ...
+	dns transip <accountName> <privateKeyPath>
+}
+```
+
+or alternatively:
+
+
+```
+tls {
+	dns transip {
+		account_name <accountName> 
+		private_key_path <privateKeyPath>
+	}
 }
 ```
